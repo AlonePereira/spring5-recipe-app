@@ -115,16 +115,20 @@ public class Recipe {
         return notes;
     }
 
-    public void setNotes(Notes notes) {
+    public void addNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this);
     }
 
     public Set<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(Set<Ingredient> ingredients) {
-        this.ingredients = ingredients;
+    public Recipe addIngredient(Ingredient ingredient) {
+        this.ingredients.add(ingredient);
+        ingredient.setRecipe(this);
+
+        return this;
     }
 
     public Difficulty getDifficulty() {
