@@ -42,7 +42,6 @@ public class RecipeController {
 
     @PostMapping("/recipe")
     public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
-        command.setDifficulty(Difficulty.EASY);
         RecipeCommand saveRecipeCommand = recipeService.saveRecipeCommand(command);
 
         return "redirect:/recipe/" + saveRecipeCommand.getId() + "/show";
