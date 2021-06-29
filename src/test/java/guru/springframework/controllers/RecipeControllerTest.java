@@ -57,4 +57,13 @@ public class RecipeControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
                 .andExpect(MockMvcResultMatchers.view().name("404error"));
     }
+
+    @Test
+    public void testGetRecipeIdInvalid() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/recipe/asdas/show"))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.view().name("400error"));
+    }
 }
