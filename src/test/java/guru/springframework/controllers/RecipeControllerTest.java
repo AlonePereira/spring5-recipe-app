@@ -60,7 +60,8 @@ public class RecipeControllerTest {
 
     @Test
     public void testGetRecipeIdInvalid() throws Exception {
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeController)
+                .setControllerAdvice(new ControllerExceptionHandler()).build();
 
         mockMvc.perform(MockMvcRequestBuilders.get("/recipe/asdas/show"))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
